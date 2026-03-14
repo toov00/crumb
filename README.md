@@ -73,4 +73,3 @@ MIT
 
 * [GitHub](https://github.com/toov00/crumb)
 * [pipx](https://pypa.github.io/pipx/) if you want an isolated install
-# crumb
