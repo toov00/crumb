@@ -9,12 +9,12 @@ import pytest
 @pytest.fixture(autouse=True)
 def isolated_data_dir(monkeypatch, tmp_path):
     monkeypatch.setenv("CRUMB_DIR", str(tmp_path))
-    import crumb
-    monkeypatch.setattr(crumb, "DATA_DIR", tmp_path)
-    monkeypatch.setattr(crumb, "DATA_FILE", tmp_path / "crumbs.json")
+    import core.storage
+    monkeypatch.setattr(core.storage, "DATA_DIR", tmp_path)
+    monkeypatch.setattr(core.storage, "DATA_FILE", tmp_path / "crumbs.json")
     return tmp_path
 
-import crumb as c_mod
+import core as c_mod
 
 def test_load_empty(isolated_data_dir):
     assert c_mod.load() == []

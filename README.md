@@ -1,6 +1,6 @@
 # <img src="crumb.png" alt="" width="70" /> crumb
 
-Saves commands, snippets, and short notes as "breadcrumbs" you can search later. One JSON file in `~/.config/crumb/`, no DB or account.
+Saves commands, snippets, and short notes as *breadcrumbs* you can search later. One JSON file in `~/.config/crumb/`, no DB or account.
 
 (( I use this so I never forget that one command again! There's so much my brain can holddd ))
 
@@ -12,15 +12,15 @@ You add stuff from the terminal (or from scripts), search by keyword, filter by 
 
 Need Python 3.10+.
 
-Clone the repo, then either:
-
 ```bash
+git clone https://github.com/toov00/crumb.git
+cd crumb
 pip install .
-# or
+# or for an isolated install:
 pipx install .
 ```
 
-To run without installing: `chmod +x crumb.py` and use `./crumb.py`. To drop the script on your PATH: `sudo ln -s "$(pwd)/crumb.py" /usr/local/bin/crumb`.
+To run from source (no install): from the repo root run `python -m core`. For development: `pip install -e ".[dev]"` then `ruff check .` and `pytest tests/`.
 
 ## Usage
 
@@ -53,13 +53,13 @@ Other: `crumb tags` for tag counts, `crumb delete 3` (or `crumb rm 3`) to remove
 
 ## Reference
 
-`add`, `search` (alias `s`), `list` (alias `ls`), `copy` (alias `cp`), `delete` (alias `rm`), `tags`, `export`. On `add`: tag and desc. On `list`: tag and n. On `export`: out.
+Commands: `add`, `search` (alias `s`), `list` (alias `ls`), `copy` (alias `cp`), `delete` (alias `rm`), `tags`, `export`. On `add`: `--tag` / `-t`, `--desc` / `-d`. On `list`: `--tag`, `-n`. On `export`: `--out` / `-o`.
 
 Data lives in `~/.config/crumb/crumbs.json`. Override with `CRUMB_DIR`, e.g. `export CRUMB_DIR="$HOME/Dropbox/crumb"` in your shell rc.
 
 ## Limitations
 
-No builtin sync; point `CRUMB_DIR` at a synced folder if you want the same file on multiple machines. `copy` needs `pbcopy`, `xclip`, or `clip` on the system; otherwise it just prints. One JSON file for everything. Fine for hundreds of entries, could get slow if you go much bigger.
+No builtin sync; point `CRUMB_DIR` at a synced folder if you want the same file on multiple machines. `copy` needs `pbcopy`, `xclip`, or `clip` on the system; otherwise it just prints. One JSON file for everything; fine for hundreds of entries, could get slow if you go much bigger.
 
 ## Contributing
 
@@ -72,4 +72,4 @@ MIT
 ## Resources
 
 * [GitHub](https://github.com/toov00/crumb)
-* [pipx](https://pypa.github.io/pipx/) if you want an isolated install
+* [pipx](https://pypa.github.io/pipx/) for an isolated install
