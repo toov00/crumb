@@ -2,6 +2,7 @@ import argparse
 
 from core.commands import (
     cmd_add,
+    cmd_clear,
     cmd_copy,
     cmd_delete,
     cmd_export,
@@ -25,6 +26,7 @@ examples:
   crumb copy 3
   crumb delete 3
   crumb tags
+  crumb clear
   crumb export --out crumbs.md
         """,
     )
@@ -56,6 +58,9 @@ examples:
 
     p_tags = sub.add_parser("tags", help="list all tags with counts")
     p_tags.set_defaults(func=cmd_tags)
+
+    p_clear = sub.add_parser("clear", help="remove all crumbs")
+    p_clear.set_defaults(func=cmd_clear)
 
     p_exp = sub.add_parser("export", help="export crumbs to markdown")
     p_exp.add_argument("--out", "-o", metavar="FILE", help="output file (default: stdout)")

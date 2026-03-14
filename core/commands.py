@@ -175,3 +175,9 @@ def cmd_export(args) -> None:
         print(banner(msg, len(f"Exported to {args.out}")))
     else:
         print(output)
+
+
+def cmd_clear(args) -> None:
+    save([])
+    msg = c(GREEN, "All crumbs cleared.")
+    print(banner(msg, len("All crumbs cleared.")))
