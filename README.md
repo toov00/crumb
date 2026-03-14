@@ -1,4 +1,4 @@
-# <img src="crumb.png" alt="" width="32" /> crumb
+# <img src="crumb.png" alt="" width="50" /> crumb
 
 Saves commands, snippets, and short notes as "breadcrumbs" you can search later. One JSON file in `~/.config/crumb/`, no DB or account.
 
