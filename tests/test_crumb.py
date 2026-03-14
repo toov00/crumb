@@ -1,10 +1,8 @@
-import json
-import os
-import sys
-import tempfile
 from pathlib import Path
 
 import pytest
+
+import core as c_mod
 
 @pytest.fixture(autouse=True)
 def isolated_data_dir(monkeypatch, tmp_path):
@@ -13,8 +11,6 @@ def isolated_data_dir(monkeypatch, tmp_path):
     monkeypatch.setattr(core.storage, "DATA_DIR", tmp_path)
     monkeypatch.setattr(core.storage, "DATA_FILE", tmp_path / "crumbs.json")
     return tmp_path
-
-import core as c_mod
 
 def test_load_empty(isolated_data_dir):
     assert c_mod.load() == []
