@@ -5,6 +5,7 @@ from core.commands import (
     cmd_clear,
     cmd_copy,
     cmd_delete,
+    cmd_edit,
     cmd_export,
     cmd_list,
     cmd_search,
@@ -24,6 +25,7 @@ examples:
   crumb search docker
   crumb list --tag ffmpeg
   crumb copy 3
+  crumb edit 3 "new command" --desc "updated"
   crumb delete 3
   crumb tags
   crumb clear
@@ -47,6 +49,13 @@ examples:
     p_list.add_argument("--tag", "-t", metavar="TAG", help="filter by tag")
     p_list.add_argument("-n", type=int, metavar="N", help="show last N crumbs")
     p_list.set_defaults(func=cmd_list)
+
+    p_edit = sub.add_parser("edit", aliases=["e"], help="update a crumb by id")
+    p_edit.add_argument("id", type=int, help="crumb id")
+    p_edit.add_argument("content", nargs="*", help="new content (omit to keep)")
+    p_edit.add_argument("--desc", "-d", metavar="TEXT", help="new description")
+    p_edit.add_argument("--tag", "-t", nargs="+", metavar="TAG", help="new tags (replaces existing)")
+    p_edit.set_defaults(func=cmd_edit)
 
     p_del = sub.add_parser("delete", aliases=["rm"], help="delete a crumb by id")
     p_del.add_argument("id", type=int, help="crumb id")

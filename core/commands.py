@@ -89,6 +89,29 @@ def cmd_list(args) -> None:
         print_crumb(crumb)
 
 
+def cmd_edit(args) -> None:
+    crumbs = load()
+    match = next((item for item in crumbs if item["id"] == args.id), None)
+    if not match:
+        msg = c(RED, f"No crumb with id {args.id}.")
+        print(banner(msg, len(f"No crumb with id {args.id}.")))
+        sys.exit(1)
+    has_content = len(args.content) > 0
+    if not (has_content or args.desc is not None or args.tag is not None):
+        msg = c(RED, "Provide content, --desc, or --tag to update.")
+        print(banner(msg, len("Provide content, --desc, or --tag to update.")))
+        sys.exit(1)
+    if has_content:
+        match["content"] = " ".join(args.content)
+    if args.desc is not None:
+        match["description"] = args.desc
+    if args.tag is not None:
+        match["tags"] = [t.lstrip("#").strip() for t in args.tag if t.strip()]
+    save(crumbs)
+    msg = c(GREEN, f"Crumb {args.id} updated.")
+    print(banner(msg, len(f"Crumb {args.id} updated.")))
+
+
 def cmd_delete(args) -> None:
     crumbs = load()
     original_len = len(crumbs)

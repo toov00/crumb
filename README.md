@@ -49,11 +49,11 @@ crumb export
 crumb export --out crumbs.md
 ```
 
-Other: `crumb tags` for tag counts, `crumb delete 3` (or `crumb rm 3`) to remove one, `crumb clear` to remove all.
+Other: `crumb tags` for tag counts, `crumb edit 3 "new command"` (or `crumb edit 3 --desc "updated"`) to update one, `crumb delete 3` (or `crumb rm 3`) to remove one, `crumb clear` to remove all.
 
 ## Reference
 
-Commands: `add`, `search` (alias `s`), `list` (alias `ls`), `copy` (alias `cp`), `delete` (alias `rm`), `tags`, `clear`, `export`. On `add`: `--tag` / `-t`, `--desc` / `-d`. On `list`: `--tag`, `-n`. On `export`: `--out` / `-o`.
+Commands: `add`, `search` (alias `s`), `list` (alias `ls`), `copy` (alias `cp`), `edit` (alias `e`), `delete` (alias `rm`), `tags`, `clear`, `export`. On `edit`: optional new content, `--desc`, `--tag` (replaces tags). On `add`: `--tag` / `-t`, `--desc` / `-d`. On `list`: `--tag`, `-n`. On `export`: `--out` / `-o`.
 
 Data lives in `~/.config/crumb/crumbs.json`. Override with `CRUMB_DIR`, e.g. `export CRUMB_DIR="$HOME/Dropbox/crumb"` in your shell rc.
 
